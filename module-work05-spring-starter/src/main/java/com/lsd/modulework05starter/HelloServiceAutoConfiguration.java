@@ -3,8 +3,6 @@ package com.lsd.modulework05starter;
 import com.lsd.modulework05starter.service.HelloProperties;
 import com.lsd.modulework05starter.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

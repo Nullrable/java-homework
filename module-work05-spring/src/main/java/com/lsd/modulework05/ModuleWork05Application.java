@@ -22,7 +22,7 @@ public class ModuleWork05Application {
 
 
 
-		//=====work01 写代码实现 Spring Bean 的装配，方式越多越好（XML、Annotation 都可以）, 提交到 Github。========
+		//=====work01 写代码实现 Spring Bean 的装配，方式越多越好（XML、Annotation 都可以）========
 
 		Student student = context.getBean(Student.class);
 		System.out.println(context.getBean(Student.class));
