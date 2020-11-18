@@ -1,0 +1,4 @@
+# Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.lsd.modulework05starter.HelloServiceAutoConfiguration,\
+com.lsd.modulework05starter.JdbcAutoConfiguration
