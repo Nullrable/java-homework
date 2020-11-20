@@ -1,6 +1,6 @@
 package com.lsd;
 
-import com.lsd.loader.DynamicXClassRegistry;
+import com.lsd.loader.XClassLoaderCache;
 import com.lsd.loader.XClassLoader;
 import com.lsd.loader.XjarLoader;
 
@@ -31,16 +31,16 @@ public class Boot {
         try {
             System.out.println("30-基于自定义Classloader实现类的动态加载和卸载：需要设计加载和卸载。");
 
-            DynamicXClassRegistry dynamicXClassRegistry = new DynamicXClassRegistry();
+            XClassLoaderCache xClassLoaderCache = new XClassLoaderCache();
 
-            Class clazz =  dynamicXClassRegistry.loadClass("Hello");
+            Class clazz =  xClassLoaderCache.loadClass("Hello");
 
             Method method = clazz.getMethod("hello");
 
             Object object = clazz.newInstance();
             method.invoke(object);
 
-            dynamicXClassRegistry.unload();
+            xClassLoaderCache.unload();
 
         }catch (Exception e){
             e.printStackTrace();

@@ -8,13 +8,13 @@ import java.util.concurrent.TimeUnit;
  * @author: nhsoft.lsd
  * @create: 2020-11-20 16:35
  */
-public class DynamicXClassRegistry {
+public class XClassLoaderCache {
 
     private XClassLoader xClassLoader;
     private ConcurrentHashMap<String, Class> registry;
 
 
-    public DynamicXClassRegistry() {
+    public XClassLoaderCache() {
         this.xClassLoader = new XClassLoader();
         registry = new ConcurrentHashMap<>();
     }
