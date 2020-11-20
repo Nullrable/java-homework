@@ -40,9 +40,8 @@ public class PluginClassLoader extends ClassLoader{
             return defineClass(name, bytes, 0, bytes.length);
 
         }else {
-            byte[] decodeByte = XClassUtil.decode(bytes);
 
-            return defineClass(name, decodeByte, 0, decodeByte.length);
+            return defineClass(name, bytes, 0, bytes.length);
         }
     }
 
@@ -51,7 +50,6 @@ public class PluginClassLoader extends ClassLoader{
 
         try {
 
-            System.out.println(this.getClass().getResource(path).getFile());
             JarFile jarFile = new JarFile(this.getClass().getResource(path).getFile());
 
             Enumeration entries  = jarFile.entries();

@@ -21,7 +21,8 @@
     <modules>
         <module>module-work05-spring</module>
         <module>module-work05-spring-starter</module>
-        <module>module-work01-s-class</module>
+        <module>module-work01-class-s</module>
+        <module>module-work01-class-s-plugin</module>
     </modules>
 
     <packaging>pom</packaging>

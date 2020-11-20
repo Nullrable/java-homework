@@ -9,7 +9,7 @@ package com.lsd.loader;
  */
 public class XClassLoader extends ClassLoader {
 
-    private static final String XLASS_PATH = "D:\\git-work\\JAVA000\\java-homework\\module-work01-class-s\\src\\main\\resources\\file\\";
+    private static final String XLASS_PATH = "/file/";
 
 
 
@@ -17,7 +17,7 @@ public class XClassLoader extends ClassLoader {
     protected Class<?> findClass(String name) throws ClassNotFoundException {
 
 
-        String xlassFile =  XLASS_PATH + name + ".xlass";
+        String xlassFile = this.getClass().getResource(XLASS_PATH).getFile() + name + ".xlass";
 
         byte[] encodeByte = XClassUtil.getBytesByFile(xlassFile);
 

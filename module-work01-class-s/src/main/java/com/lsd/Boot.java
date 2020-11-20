@@ -4,6 +4,8 @@ import com.lsd.loader.XClassLoaderCache;
 import com.lsd.loader.XClassLoader;
 import com.lsd.loader.XjarLoader;
 
+import com.lsd.plugin.MyPlugin;
+import com.lsd.plugin.PluginClassLoader;
 import java.lang.reflect.Method;
 
 /**
@@ -16,11 +18,27 @@ public class Boot {
 
     public static void main (String args[])throws Exception {
 
+        testPlugin();
+
         testDynamicLoadAndUnload();
 
         testXlassLoad();
 
         testXarLoad();
+
+    }
+
+    private static void testPlugin()throws Exception {
+
+        System.out.println("30-基于自定义Classloader实现模块化机制：需要设计模块化机制。");
+
+        PluginClassLoader pluginClassLoader = new PluginClassLoader();
+
+        Class clazz = pluginClassLoader.loadClass("com.lsd.plugin.impl.MyPluginImpl");
+
+        MyPlugin myPlugin = (MyPlugin)clazz.newInstance();
+
+        System.out.println(myPlugin.say());
 
     }
 

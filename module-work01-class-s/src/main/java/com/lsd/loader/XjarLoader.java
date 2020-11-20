@@ -1,12 +1,8 @@
 package com.lsd.loader;
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.zip.ZipEntry;
 
@@ -17,7 +13,7 @@ import java.util.zip.ZipEntry;
  */
 public class XjarLoader extends ClassLoader {
 
-    private static final String XJAR_PATH = "D:\\git-work\\JAVA000\\java-homework\\module-work01-class-s\\src\\main\\resources\\lib\\Hello.xar";
+    private static final String XJAR_PATH = "/lib/Hello.xar";
 
     private Map<String, byte[]> map = new HashMap<>();
 
@@ -28,7 +24,7 @@ public class XjarLoader extends ClassLoader {
 
         if (bytes == null || bytes.length == 0) {
 
-            decompress(XJAR_PATH);
+            decompress(this.getClass().getResource(XJAR_PATH).getFile() );
 
             bytes = map.get(name);
 
