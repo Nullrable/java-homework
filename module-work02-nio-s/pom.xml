@@ -9,9 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.lsd</groupId>
-    <artifactId>module-work01-class-s</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>module-work01-class-s</name>
+    <artifactId>module-work02-nio-s</artifactId>
+
 
 </project>
