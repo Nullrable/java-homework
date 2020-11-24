@@ -24,6 +24,7 @@
         <module>module-work01-class-s</module>
         <module>module-work01-class-s-plugin</module>
         <module>module-work02-nio-s</module>
+        <module>module-work06-database</module>
     </modules>
 
     <packaging>pom</packaging>
