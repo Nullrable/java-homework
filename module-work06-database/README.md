@@ -138,7 +138,7 @@ create table order_goods
    sale_money           decimal(16,4) not null comment '销售金额',
    sale_dicount_money   decimal(16,4) not null comment '折扣金额',
    create_time          bigint not null comment '创建时间戳',
-   primary key (order_id, order_item_num)
+   primary key (order_id, order_goods_num)
 )COMMENT='订单商品'
 ENGINE = InnoDB
 DEFAULT CHARSET = utf8mb4;
