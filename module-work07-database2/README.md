@@ -5,7 +5,6 @@
 * 每次1000条就commit: 原生JDBC操作， 使用insert into values 多个，这个是最快的，插入 t_order 100W数据大致26秒，
 * 一次性100W commit， 大致23秒
 * 每次1W commit， 大致28秒
-* 单次1W + 批处理，大致28秒
 * 单次commit限制跟这个参数有关，select @@max_allowed_packet，默认安装的mysql8.0.22 默认值是64M，
 ```
  String sql = "insert into t_order (order_id, merchant_id, user_id, user_name, money, dicount_money, deliver_fee, create_time)" +
@@ -59,7 +58,7 @@ PreparedStatement ps = conn.prepareStatement(sql);
 }
 ```
 
-4. TODO 1. 使用Mybatis插入  2. 多张关联表一起插入
+4. TODO 1. 使用多线程  2. 多张关联表一起插入 3. 使用Mybatis插入 
 
 
 5. 使用的表结构如下

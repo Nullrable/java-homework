@@ -16,8 +16,6 @@ public class ModuleWork07BatchInsertApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ModuleWork07BatchInsertApplication.class, args);
-
-
     }
 
     @Primary
