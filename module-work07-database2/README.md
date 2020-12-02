@@ -21,7 +21,7 @@ spring:
           batch_size: 1000
 ```
 
-3.Todo 使用Mybatis插入
+3.TODO 使用Mybatis插入
 
 ## work02 动态数据源1.0版本
 
