@@ -5,7 +5,7 @@ lsd:
     driver: com.mysql.cj.jdbc.Driver
     username: root
     password: nhsoft123
-    url: jdbc:mysql://127.0.0.1:3306/lsd_geekbang?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://127.0.0.1:3306/java000_data?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
     initPoolSize: 10
     maxPoolSize: 100
 
@@ -14,7 +14,7 @@ spring:
   ########-spring datasource-########
   datasource:
     #账号配置
-    url: jdbc:mysql://127.0.0.1:3306/lsd_geekbang?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://127.0.0.1:3306/java000_data?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
     username: root
     password: nhsoft123
     driver-class-name: com.mysql.cj.jdbc.Driver

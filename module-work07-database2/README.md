@@ -1,6 +1,29 @@
+## work01
+
+1. 每次1000条就commit: 原生JDBC操作， 使用insert into values 多个，这个是最快的，插入 t_order 100W数据大致26秒，
+2. 一次性100W commit， 大致23秒
+3. 每次1W commit， 大致28秒
+4. 单次commit限制跟这个参数有关，select @@max_allowed_packet，默认安装的mysql8.0 默认值是64M，
+```
+ String sql = "insert into t_order (order_id, merchant_id, user_id, user_name, money, dicount_money, deliver_fee, create_time)" +
+                        " values " + values(orders);
+```
+
+2. 使用JPA批量插入，每次1000，flush缓存，使用Druid SQL监控，导致107秒完成
+![avatar](jpa-batch-insert.png)
+
+```
+spring:
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 1000
+```
 
 
-## work02
+
+## work02 动态数据源1.0版本
 
 >基于AbstractRoutingDataSource，ThreadLocal实现多租户动态数据源，关键代码如下
 
@@ -236,3 +259,7 @@ public class RoundRobin {
     }
 }
 ```
+
+## work03 动态数据源2.0版本, ShardingSphere-jdbc
+
+> 这个周四周五补上，这两周有点忙
