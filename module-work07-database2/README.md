@@ -59,7 +59,7 @@ PreparedStatement ps = conn.prepareStatement(sql);
 }
 ```
 
-4.TODO 1. 使用Mybatis插入  2. 多张关联表一起插入
+4. TODO 1. 使用Mybatis插入  2. 多张关联表一起插入
 
 
 5. 使用的表结构如下
