@@ -1,9 +1,12 @@
 ## work01
 
-1. 每次1000条就commit: 原生JDBC操作， 使用insert into values 多个，这个是最快的，插入 t_order 100W数据大致26秒，
-2. 一次性100W commit， 大致23秒
-3. 每次1W commit， 大致28秒
-4. 单次commit限制跟这个参数有关，select @@max_allowed_packet，默认安装的mysql8.0 默认值是64M，
+1. 使用`PreparedStatement`
+
+* 每次1000条就commit: 原生JDBC操作， 使用insert into values 多个，这个是最快的，插入 t_order 100W数据大致26秒，
+* 一次性100W commit， 大致23秒
+* 每次1W commit， 大致28秒
+* 单次1W + 批处理，大致28秒
+* 单次commit限制跟这个参数有关，select @@max_allowed_packet，默认安装的mysql8.0 默认值是64M，
 ```
  String sql = "insert into t_order (order_id, merchant_id, user_id, user_name, money, dicount_money, deliver_fee, create_time)" +
                         " values " + values(orders);
@@ -21,7 +24,64 @@ spring:
           batch_size: 1000
 ```
 
-3.TODO 使用Mybatis插入
+3. 使用`PreparedStatement` + 批处理耗时，单次1000，这个比较慢，耗时 107 秒, 跟JPA批量插入差不多
+
+
+```
+String sql = "insert into t_order (order_id, merchant_id, user_id, user_name, money, dicount_money, deliver_fee, create_time) values (?, ?, ?, ?,?, ?, ?, ?)";
+
+
+PreparedStatement ps = conn.prepareStatement(sql);
+
+
+ for (int i = 0; i < list.size(); i ++) {
+
+     TOrder order = list.get(i);
+
+     ps.setLong(1, order.getOrderId());
+     ps.setLong(2, order.getMerchantId());
+     ps.setLong(3, order.getUserId());
+     ps.setString(4, order.getUserName());
+     ps.setDouble(5, order.getMoney());
+     ps.setDouble(6, order.getDicountMoney());
+     ps.setDouble(7, order.getDeliverFee());
+     ps.setLong(8, order.getCreateTime());
+
+    ps.addBatch();
+
+    //每1000次提交一次
+    if(i%1000==0){//可以设置不同的大小；如50，100，500，1000等等
+        ps.executeBatch();
+        conn.commit();
+        ps.clearBatch();
+    }
+
+}
+```
+
+4.TODO 1. 使用Mybatis插入  2. 多张关联表一起插入
+
+
+5. 使用的表结构如下
+```
+﻿/*==============================================================*/
+/* Table: "order"                                               */
+/*==============================================================*/
+create table t_order
+(
+  order_id             bigint not null comment '流水号',
+  merchant_id          bigint not null comment '商户ID',
+  user_id              bigint not null comment '用户ID',
+  user_name            varchar(50) not null comment '用户名称',
+  money                decimal(16,4) comment '金额',
+  dicount_money        decimal(16,4) comment '优惠金额',
+  deliver_fee          decimal(16,4) comment '运费',
+  create_time          bigint not null comment '创建时间',
+  primary key (order_id)
+)COMMENT='订单'
+ENGINE = InnoDB
+DEFAULT CHARSET = utf8mb4;
+```
 
 ## work02 动态数据源1.0版本
 
