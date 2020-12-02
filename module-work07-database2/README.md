@@ -6,7 +6,7 @@
 * 一次性100W commit， 大致23秒
 * 每次1W commit， 大致28秒
 * 单次1W + 批处理，大致28秒
-* 单次commit限制跟这个参数有关，select @@max_allowed_packet，默认安装的mysql8.0 默认值是64M，
+* 单次commit限制跟这个参数有关，select @@max_allowed_packet，默认安装的mysql8.0.22 默认值是64M，
 ```
  String sql = "insert into t_order (order_id, merchant_id, user_id, user_name, money, dicount_money, deliver_fee, create_time)" +
                         " values " + values(orders);
