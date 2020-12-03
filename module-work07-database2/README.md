@@ -58,10 +58,12 @@ PreparedStatement ps = conn.prepareStatement(sql);
 }
 ```
 
-4. TODO 1. 使用多线程  2. 多张关联表一起插入 3. 使用Mybatis插入 
+4. `&rewriteBatchedStatements=true`jdbc连接中增加该参数，2，3提升明显，2提升到20s，3提升到12s
+
+5. TODO 1. 使用多线程  2. 多张关联表一起插入 3. 使用Mybatis插入 
 
 
-5. 使用的表结构如下
+6. 使用的表结构如下
 ```
 ﻿/*==============================================================*/
 /* Table: "order"                                               */

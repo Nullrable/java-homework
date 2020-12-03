@@ -8,12 +8,12 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/java000_data?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://localhost:3306/java000_data?useUnicode=true&characterEncoding=utf-8&useSSL=false&rewriteBatchedStatements=true
     username: root
     password: 'nhsoft123'
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/java000_data?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      url: jdbc:mysql://localhost:3306/java000_data?useUnicode=true&characterEncoding=utf-8&useSSL=false&rewriteBatchedStatements=true
       username: root
       password: 'nhsoft123'
       # 下面为连接池的补充设置，应用到上面所有数据源中
