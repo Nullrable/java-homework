@@ -26,6 +26,7 @@
         <module>module-work02-nio-s</module>
         <module>module-work06-database</module>
         <module>module-work07-database2</module>
+        <module>module-work07-database-sharding-replica-query</module>
         <module>module-work08-database3</module>
     </modules>
 
