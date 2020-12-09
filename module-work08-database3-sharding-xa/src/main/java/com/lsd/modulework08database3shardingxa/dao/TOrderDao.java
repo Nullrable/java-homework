@@ -1,0 +1,25 @@
+package com.lsd.modulework08database3shardingxa.dao;
+
+import com.lsd.modulework08database3shardingxa.entity.TOrder;
+import java.math.BigInteger;
+import java.util.List;
+
+/**
+ * @Author: nhsoft.lsd
+ */
+public interface TOrderDao {
+
+    void batchSave(List<TOrder> list);
+
+    List<TOrder> listByUser(Long userId);
+
+    BigInteger count();
+
+    TOrder read(Long orderId);
+
+    void update(TOrder tOrder);
+
+    TOrder save(TOrder tOrder);
+
+    void testXaCommit(TOrder order1, TOrder order2);
+}
