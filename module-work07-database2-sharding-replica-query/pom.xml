@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.lsd</groupId>
-    <artifactId>module-work08-database3</artifactId>
+    <artifactId>module-work07-database2-sharding-replica-query</artifactId>
 
 
     <dependencies>

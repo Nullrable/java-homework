@@ -7,6 +7,7 @@ import javax.sql.DataSource;
 import org.apache.shardingsphere.driver.api.yaml.YamlShardingSphereDataSourceFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 /**
  * @Author: nhsoft.lsd
@@ -18,13 +19,15 @@ import org.springframework.context.annotation.Configuration;
 public class DatasourceConfig {
 
     @Bean
+    @Primary
     public DataSource createDataSource(){
 
         // 创建 ShardingSphereDataSource
         DataSource dataSource = null;
         try {
-            dataSource = YamlShardingSphereDataSourceFactory.createDataSource(getFile("/application-sharding-jdbc.yaml"));
+            dataSource = YamlShardingSphereDataSourceFactory.createDataSource(getFile("/sharding-replica-query.yml"));
         }catch (SQLException | IOException e){
+            e.printStackTrace();
             System.out.println("application-sharding-jdbc.yaml loading error");
         }
         return dataSource;

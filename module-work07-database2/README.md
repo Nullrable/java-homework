@@ -322,5 +322,98 @@ public class RoundRobin {
 ```
 
 ## work03 动态数据源2.0版本, ShardingSphere-jdbc
+1. 详细代码见 `module-work07-database2-sharding-replica-query`
+2. 创建一主两从，分别创建ds0，ds1数据库
+3. 核心配置如下
+```
+dataSources:
+  primary_ds_0: !!com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ds0?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+    username: root
+    password: nhsoft123
+  primary_ds_0_replica_0: !!com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:33306/ds0?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+  primary_ds_0_replica_1: !!com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:33307/ds0?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
 
-> 这个周四周五补上，这两周有点忙
+  primary_ds_1: !!com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ds1?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+    username: root
+    password: nhsoft123
+  primary_ds_1_replica_0: !!com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:33306/ds1?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+  primary_ds_1_replica_1: !!com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:33307/ds1?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+
+rules:
+# 配置分片规则
+- !SHARDING
+  tables:
+    # 配置 t_order 表规则
+    t_order:
+      actualDataNodes: ds${0..1}.t_order${0..15}
+      # 配置分库策略
+      databaseStrategy:
+        standard:
+          shardingColumn: user_id
+          shardingAlgorithmName: database_inline
+      # 配置分表策略
+      tableStrategy:
+        standard:
+          shardingColumn: order_id
+          shardingAlgorithmName: table_inline
+      # 分布式序列策略
+      keyGenerateStrategy:
+        column: order_id
+        keyGeneratorName: SNOWFLAKE
+
+  # 配置分片算法
+  shardingAlgorithms:
+    database_inline:
+      type: INLINE
+      props:
+        algorithm-expression: ds${user_id % 2}
+    table_inline:
+      type: INLINE
+      props:
+        algorithm-expression: t_order${order_id % 16}
+
+  # 分布式序列算法配置
+  keyGenerators:
+    SNOWFLAKE:
+      type: SNOWFLAKE
+      props:
+        worker-id: 123
+
+- !REPLICA_QUERY
+  dataSources:
+    ds0:
+      primaryDataSourceName: primary_ds_0
+      replicaDataSourceNames: [primary_ds_0_replica_0, primary_ds_0_replica_1]
+      loadBalancerName: roundRobin
+    ds1:
+      primaryDataSourceName: primary_ds_1
+      replicaDataSourceNames: [primary_ds_1_replica_0, primary_ds_1_replica_1]
+      loadBalancerName: roundRobin
+  loadBalancers:
+    roundRobin:
+      type: ROUND_ROBIN
+
+props:
+  sql-show: true
+
+```

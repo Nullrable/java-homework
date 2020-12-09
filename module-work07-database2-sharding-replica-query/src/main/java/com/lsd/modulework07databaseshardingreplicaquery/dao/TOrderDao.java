@@ -1,6 +1,6 @@
 package com.lsd.modulework07databaseshardingreplicaquery.dao;
 
-import com.lsd.modulework08database3.entity.TOrder;
+import com.lsd.modulework07databaseshardingreplicaquery.entity.TOrder;
 import java.math.BigInteger;
 import java.util.List;
 
