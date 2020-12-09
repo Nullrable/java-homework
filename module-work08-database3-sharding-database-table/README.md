@@ -1,4 +1,4 @@
-
+## Week08 作业题目（周四) 设计对前面的订单表数据进行水平分库分表，拆分 2 个库，每个库 16 张表。并在新结构在演示常见的增删改查操作。代码、sql 和配置文件，上传到 Github。
 1. `t_order` DDL语句
 ```
 CREATE TABLE `t_order` (
@@ -82,3 +82,7 @@ props:
 
 4. `Can not update sharding key, logic table: [t_order], column [user_id]` 遇到该错误，表示表分片key支持修改
 > JPA下只要调整 @Column(updatable = false), Mybati或者原生SQL只要update set 中不带这个字段就好
+
+## Week08 作业题目（周六）（必做）基于 hmily TCC 或 ShardingSphere 的 Atomikos XA 实现一个简单的分布式事务应用 demo（二选一），提交到 Github。
+
+见项目`module-work08-database3-sharding-xa`
