@@ -73,4 +73,11 @@ public class TOrderDaoImpl implements TOrderDao {
     public TOrder read(Long orderId) {
         return entityManager.find(TOrder.class, orderId);
     }
+
+    @Override
+    public TOrder save(TOrder tOrder) {
+        entityManager.persist(tOrder);
+
+        return tOrder;
+    }
 }

@@ -30,7 +30,10 @@ rules:
           standard:
             shardingColumn: order_id
             shardingAlgorithmName: table_inline
-
+        # 分布式序列策略
+        keyGenerateStrategy:
+          column: order_id
+          keyGeneratorName: SNOWFLAKE
 
     # 配置分片算法
     shardingAlgorithms:
@@ -42,6 +45,15 @@ rules:
         type: INLINE
         props:
           algorithm-expression: t_order${order_id % 16}
+
+    # 分布式序列算法配置
+    keyGenerators:
+      SNOWFLAKE:
+        type: SNOWFLAKE
+        props:
+          worker-id: 123
+
+
 props:
   max-connections-size-per-query: 1
   sql-show: true #显示实际SQL

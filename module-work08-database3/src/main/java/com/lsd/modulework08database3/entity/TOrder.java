@@ -1,12 +1,10 @@
 package com.lsd.modulework08database3.entity;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import lombok.Data;
 import org.checkerframework.checker.units.qual.C;
+import org.hibernate.annotations.GeneratorType;
 
 /**
  * 订单(TOrder)实体类
@@ -23,6 +21,7 @@ public class TOrder implements Serializable {
     * 流水号
     */
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
     /**
     * 商户ID

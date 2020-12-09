@@ -17,4 +17,6 @@ public interface TOrderDao {
     TOrder read(Long orderId);
 
     void update(TOrder tOrder);
+
+    TOrder save(TOrder tOrder);
 }
