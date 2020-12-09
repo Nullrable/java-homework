@@ -1,10 +1,12 @@
 package com.lsd.modulework08database3.entity;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Data;
+import org.checkerframework.checker.units.qual.C;
 
 /**
  * 订单(TOrder)实体类
@@ -16,7 +18,7 @@ import lombok.Data;
 @Table(name = "t_order")
 @Data
 public class TOrder implements Serializable {
-    private static final long serialVersionUID = 146053828952003684L;
+    private static final long serialVersionUID = 146053828003684L;
     /**
     * 流水号
     */
@@ -29,6 +31,7 @@ public class TOrder implements Serializable {
     /**
     * 用户ID
     */
+    @Column(updatable = false)
     private Long userId;
     /**
     * 用户名称
