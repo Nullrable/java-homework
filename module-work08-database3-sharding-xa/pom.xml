@@ -61,12 +61,6 @@
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.apache.shardingsphere/shardingsphere-jdbc-core -->
-		<dependency>
-			<groupId>org.apache.shardingsphere</groupId>
-			<artifactId>shardingsphere-jdbc-core</artifactId>
-			<version>5.0.0-alpha</version>
-		</dependency>
 
 		<dependency>
 			<groupId>org.apache.shardingsphere</groupId>
@@ -80,14 +74,6 @@
 			<artifactId>shardingsphere-transaction-xa-core</artifactId>
 			<version>5.0.0-alpha</version>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.apache.shardingsphere/shardingsphere-transaction-xa-atomikos -->
-		<dependency>
-			<groupId>org.apache.shardingsphere</groupId>
-			<artifactId>shardingsphere-transaction-xa-atomikos</artifactId>
-			<version>5.0.0-alpha</version>
-		</dependency>
-
 
 		<!-- 使用 BASE 事务时，需要引入此模块 -->
 		<dependency>
