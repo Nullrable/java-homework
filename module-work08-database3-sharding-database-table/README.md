@@ -86,6 +86,3 @@ props:
 ## Week08 作业题目（周六）（必做）基于 hmily TCC 或 ShardingSphere 的 Atomikos XA 实现一个简单的分布式事务应用 demo（二选一），提交到 Github。
 
 见项目`module-work08-database3-sharding-xa`
-
-运行包这个错误 `Provider org.apache.shardingsphere.transaction.base.seata.at.SeataATShardingTransactionManager could not be instantiated`
-提了issues https://github.com/apache/shardingsphere/issues/8564
