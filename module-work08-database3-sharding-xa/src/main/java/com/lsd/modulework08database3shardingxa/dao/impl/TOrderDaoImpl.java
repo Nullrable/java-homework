@@ -20,7 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
  * @Modified By：
  */
 @Repository
-@Transactional
 public class TOrderDaoImpl implements TOrderDao {
 
     @PersistenceContext
@@ -87,7 +86,12 @@ public class TOrderDaoImpl implements TOrderDao {
     @Transactional
     @ShardingTransactionType(TransactionType.XA)  // 支持TransactionType.LOCAL, TransactionType.XA, TransactionType.BASE
     public void testXaCommit(TOrder order1, TOrder order2) {
+
         entityManager.persist(order1);
         entityManager.persist(order2);
+
+        System.out.println("order1: " + order1.toString());
+        System.out.println("order2: " + order2.toString());
+
     }
 }
