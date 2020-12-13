@@ -29,6 +29,7 @@
         <module>module-work07-database2-sharding-replica-query</module>
         <module>module-work08-database3-sharding-database-table</module>
         <module>module-work08-database3-sharding-xa</module>
+        <module>module-work05-all</module>
     </modules>
 
     <packaging>pom</packaging>
