@@ -30,6 +30,7 @@
         <module>module-work08-database3-sharding-database-table</module>
         <module>module-work08-database3-sharding-xa</module>
         <module>module-work05-all</module>
+        <module>module-work03-gateway</module>
     </modules>
 
     <packaging>pom</packaging>

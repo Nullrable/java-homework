@@ -25,7 +25,7 @@ public class DynamicProxyTest {
         userService.show();
 
 //        // 保存JDK动态代理生成的代理类，类名保存为 UserServiceProxy
-        ProxyUtils.generateClassFile(userService.getClass(), "UserServiceProxy2");
+        JDKDynamicProxyUtils.generateClassFile(userService.getClass(), "UserServiceProxy2");
 
     }
 }
