@@ -3,6 +3,7 @@ package com.lsd.rpcfx.core.client;
 import com.alibaba.fastjson.JSON;
 import com.lsd.rpcfx.core.api.RpcfxRequest;
 import com.lsd.rpcfx.core.api.RpcfxResponse;
+import com.lsd.rpcfx.core.exception.RpcfxException;
 import java.lang.reflect.Method;
 import net.sf.cglib.proxy.Callback;
 import net.sf.cglib.proxy.Enhancer;
@@ -69,6 +70,13 @@ class RpcfxInvocationHandler implements MethodInterceptor {
         System.out.println("resp json: "+respJson);
 
         RpcfxResponse response = JSON.parseObject(respJson, RpcfxResponse.class);
+
+        if (response.getStatus() != null && !response.getStatus() ) {
+
+            RpcfxException exception = response.getException();
+
+            throw exception.getCause() == null ? exception : exception.getCause();
+        }
 
         return JSON.parse(response.getResult().toString());
 

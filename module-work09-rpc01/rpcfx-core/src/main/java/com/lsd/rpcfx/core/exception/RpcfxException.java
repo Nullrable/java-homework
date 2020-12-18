@@ -1,0 +1,23 @@
+package com.lsd.rpcfx.core.exception;
+
+/**
+ * @Author: nhsoft.lsd
+ * @Description:
+ * @Date:Create：in 12/18/20 9:14 PM
+ * @Modified By：
+ */
+public class RpcfxException extends Exception {
+
+    public RpcfxException() {
+    }
+
+    public RpcfxException(String message) {
+        super(message);
+    }
+
+    public RpcfxException(Throwable cause) {
+        super(cause);
+    }
+
+
+}

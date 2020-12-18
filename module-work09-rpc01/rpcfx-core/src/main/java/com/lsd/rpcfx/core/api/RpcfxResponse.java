@@ -1,5 +1,7 @@
 package com.lsd.rpcfx.core.api;
 
+import com.lsd.rpcfx.core.exception.RpcfxException;
+
 /**
  * @Author: nhsoft.lsd
  * @Description:
@@ -12,7 +14,7 @@ public class RpcfxResponse {
 
     private Object result;
 
-    private Exception exception;
+    private RpcfxException exception;
 
     public Boolean getStatus() {
         return status;
@@ -30,11 +32,11 @@ public class RpcfxResponse {
         this.result = result;
     }
 
-    public Exception getException() {
+    public RpcfxException getException() {
         return exception;
     }
 
-    public void setException(Exception exception) {
+    public void setException(RpcfxException exception) {
         this.exception = exception;
     }
 }

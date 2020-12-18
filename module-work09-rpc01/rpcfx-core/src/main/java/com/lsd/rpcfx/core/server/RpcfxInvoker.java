@@ -5,6 +5,7 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.lsd.rpcfx.core.api.RpcfxRequest;
 import com.lsd.rpcfx.core.api.RpcfxResolver;
 import com.lsd.rpcfx.core.api.RpcfxResponse;
+import com.lsd.rpcfx.core.exception.RpcfxException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 
@@ -44,8 +45,10 @@ public class RpcfxInvoker {
             return response;
         }catch (Exception e){
 
+            e.printStackTrace();
+
             response.setStatus(false);
-            response.setException(e);
+            response.setException(new RpcfxException("server happens an error, see more information on server side"));
 
             return response;
         }
