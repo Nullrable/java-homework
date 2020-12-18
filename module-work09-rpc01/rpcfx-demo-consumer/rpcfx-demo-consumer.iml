@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+    <output url="file://$MODULE_DIR$/../rpcfx-demo-consumer/target/classes" />
+    <output-test url="file://$MODULE_DIR$/../rpcfx-demo-consumer/target/test-classes" />
+    <content url="file://$MODULE_DIR$/../rpcfx-demo-consumer">
+      <sourceFolder url="file://$MODULE_DIR$/../rpcfx-demo-consumer/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../rpcfx-demo-consumer/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../rpcfx-demo-consumer/src/test/java" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
+      <excludeFolder url="file://$MODULE_DIR$/../rpcfx-demo-consumer/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="rpcfx-core" />
+    <orderEntry type="library" name="Maven: cglib:cglib:3.3.0" level="project" />
+    <orderEntry type="library" name="Maven: org.ow2.asm:asm:7.1" level="project" />
+    <orderEntry type="library" name="Maven: com.squareup.okhttp3:okhttp:3.14.9" level="project" />
+    <orderEntry type="library" name="Maven: com.squareup.okio:okio:1.17.2" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.70" level="project" />
+    <orderEntry type="module" module-name="rpcfx-demo-api" />
+  </component>
+</module>

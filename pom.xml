@@ -31,6 +31,7 @@
         <module>module-work08-database3-sharding-xa</module>
         <module>module-work05-all</module>
         <module>module-work03-gateway</module>
+        <module>module-work09-rpc01</module>
     </modules>
 
     <packaging>pom</packaging>
