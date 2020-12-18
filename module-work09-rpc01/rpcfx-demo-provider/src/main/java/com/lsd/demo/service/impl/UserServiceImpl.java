@@ -15,7 +15,6 @@ public class UserServiceImpl implements UserService {
     public User findById(String id) {
         User user = new User();
         user.setName("hello " + id + " !" );
-        int i = 1/0;
         return user;
     }
 }

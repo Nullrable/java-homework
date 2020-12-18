@@ -1,9 +1,14 @@
 package com.lsd.demo.client;
 
+
 import com.alibaba.fastjson.JSON;
 import com.lsd.demo.service.User;
 import com.lsd.demo.service.UserService;
-import com.lsd.rpcfx.core.client.RpcfxClient;
+import org.springframework.aop.framework.ProxyFactoryBean;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
 
 /**
  * @Author: nhsoft.lsd
@@ -11,15 +16,36 @@ import com.lsd.rpcfx.core.client.RpcfxClient;
  * @Date:Create：in 12/18/20 2:37 PM
  * @Modified By：
  */
+@SpringBootApplication
 public class Main {
 
-    public static void main (String args[]) {
+
+
+    public static void main (String args[])throws Exception {
+
+        ConfigurableApplicationContext context = SpringApplication.run(Main.class, args);
 
         System.setProperty("fastjson.parser.autoTypeSupport", "true");
 
-        UserService userService = RpcfxClient.create(UserService.class, "http://localhost:8080");
-        User user = userService.findById("1");
+        RpcfxAop rpcfxAop =  (RpcfxAop)context.getBean("RpcfxAop");
+
+
+        UserService userService = (UserService)context.getBean("ProxyFactoryBean");
+
+        User user = userService.findById("123");
+
         System.out.println(JSON.toJSONString(user));
 
     }
+
+    @Bean("ProxyFactoryBean")
+    public ProxyFactoryBean createProxyFactoryBean(){
+        ProxyFactoryBean proxyFactoryBean = new ProxyFactoryBean();
+        proxyFactoryBean.setTargetClass(UserService.class);
+        proxyFactoryBean.setInterceptorNames("RpcfxAop");
+        return proxyFactoryBean;
+    }
+
+
+
 }
