@@ -10,7 +10,7 @@ import org.springframework.context.ApplicationContextAware;
  * @Date:Create：in 12/18/20 2:29 PM
  * @Modified By：
  */
-public class DefaultResolver implements RpcfxResolver, ApplicationContextAware {
+public class DefaultRpcfxResolver implements RpcfxResolver, ApplicationContextAware {
 
     private ApplicationContext applicationContext;
 

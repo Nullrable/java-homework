@@ -2,11 +2,13 @@ package com.lsd.demo;
 
 import com.lsd.demo.service.UserService;
 import com.lsd.demo.service.impl.UserServiceImpl;
+import com.lsd.rpcfx.core.RpcfxServiceScan;
 import com.lsd.rpcfx.core.api.RpcfxRequest;
 import com.lsd.rpcfx.core.api.RpcfxResolver;
 import com.lsd.rpcfx.core.api.RpcfxResponse;
 import com.lsd.rpcfx.core.server.RpcfxInvoker;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @SpringBootApplication
 @RestController
+@RpcfxServiceScan("com.lsd.demo.service.impl")
 public class Bootstrap {
 
     public static void main (String args[]) {
@@ -40,13 +43,19 @@ public class Bootstrap {
 
 
     @Bean
-    public RpcfxInvoker createInvoker(@Autowired RpcfxResolver resolver){
+    public RpcfxInvoker createInvoker(@Qualifier("reflectRpcfxResolver") RpcfxResolver resolver){
         return new RpcfxInvoker(resolver);
     }
 
-    @Bean
-    public RpcfxResolver createResolver(){
-        return new DefaultResolver();
+    @Bean(name = "defalutRpcReolver")
+    public RpcfxResolver createDefaultResolver(){
+        return new DefaultRpcfxResolver();
+    }
+
+
+    @Bean(name = "reflectRpcfxResolver")
+    public RpcfxResolver createReflectRpcfxResolver(){
+        return new ReflectRpcfxResolver();
     }
 
 
