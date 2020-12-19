@@ -2,7 +2,6 @@ package com.lsd.demo.client;
 
 import com.lsd.rpcfx.core.client.InvokerMetadata;
 import com.lsd.rpcfx.core.client.RpcfxClient;
-import com.lsd.rpcfx.core.client.RpcfxClientAop;
 import com.lsd.rpcfx.core.client.RpcfxClientNetty;
 import java.lang.reflect.Method;
 import org.aopalliance.intercept.MethodInterceptor;

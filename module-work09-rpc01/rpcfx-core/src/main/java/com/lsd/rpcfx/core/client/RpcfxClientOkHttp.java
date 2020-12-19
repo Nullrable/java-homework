@@ -15,7 +15,7 @@ import okhttp3.RequestBody;
  * @Date:Create：in 12/18/20 10:19 PM
  * @Modified By：
  */
-public class RpcfxClientAop  implements RpcfxClient{
+public class RpcfxClientOkHttp implements RpcfxClient{
 
     @Override
     public Object invoke(InvokerMetadata metadata)throws Throwable {
