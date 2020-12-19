@@ -12,8 +12,9 @@ import com.lsd.rpcfx.core.exception.RpcfxException;
  * @Date:Create：in 12/19/20 10:16 AM
  * @Modified By：
  */
-public class RpcfxClientNetty {
+public class RpcfxClientNetty implements RpcfxClient {
 
+    @Override
     public Object invoke(InvokerMetadata metadata)throws Throwable {
         RpcfxRequest rpcfxrequest = new RpcfxRequest();
         rpcfxrequest.setMethod(metadata.getMethodName());

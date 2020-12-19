@@ -15,8 +15,9 @@ import okhttp3.RequestBody;
  * @Date:Create：in 12/18/20 10:19 PM
  * @Modified By：
  */
-public class RpcfxClientAop {
+public class RpcfxClientAop  implements RpcfxClient{
 
+    @Override
     public Object invoke(InvokerMetadata metadata)throws Throwable {
         RpcfxRequest rpcfxrequest = new RpcfxRequest();
         rpcfxrequest.setMethod(metadata.getMethodName());

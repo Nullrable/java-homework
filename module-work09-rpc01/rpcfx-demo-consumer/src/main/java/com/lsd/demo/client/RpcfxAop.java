@@ -1,6 +1,7 @@
 package com.lsd.demo.client;
 
 import com.lsd.rpcfx.core.client.InvokerMetadata;
+import com.lsd.rpcfx.core.client.RpcfxClient;
 import com.lsd.rpcfx.core.client.RpcfxClientAop;
 import com.lsd.rpcfx.core.client.RpcfxClientNetty;
 import java.lang.reflect.Method;
@@ -26,7 +27,7 @@ public class RpcfxAop implements MethodInterceptor {
             throw new IllegalStateException("MethodInvocation is not a Spring ProxyMethodInvocation: " + mi);
         } else {
 
-            RpcfxClientNetty rpcfxClientAop = new RpcfxClientNetty();
+            RpcfxClient rpcfxClientAop = new RpcfxClientNetty();
 
             ProxyMethodInvocation pmi = (ProxyMethodInvocation)mi;
 
