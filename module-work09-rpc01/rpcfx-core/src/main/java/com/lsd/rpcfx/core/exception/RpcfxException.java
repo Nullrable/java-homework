@@ -6,7 +6,7 @@ package com.lsd.rpcfx.core.exception;
  * @Date:Create：in 12/18/20 9:14 PM
  * @Modified By：
  */
-public class RpcfxException extends Exception {
+public class RpcfxException extends RuntimeException {
 
     public RpcfxException() {
     }

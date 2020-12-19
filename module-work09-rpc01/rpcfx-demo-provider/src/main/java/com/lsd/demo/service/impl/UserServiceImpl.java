@@ -2,6 +2,7 @@ package com.lsd.demo.service.impl;
 
 import com.lsd.demo.service.User;
 import com.lsd.demo.service.UserService;
+import com.lsd.rpcfx.core.exception.RpcfxException;
 
 /**
  * @Author: nhsoft.lsd
@@ -12,9 +13,15 @@ import com.lsd.demo.service.UserService;
 public class UserServiceImpl implements UserService {
 
     @Override
-    public User findById(String id) {
-        User user = new User();
-        user.setName("hello " + id + " !" );
+    public User findByName(String name) {
+        User user = new User(name);
+
+        System.out.println("receive request from client: " + name );
         return user;
+    }
+
+    @Override
+    public User findById(String id) {
+        throw new RpcfxException("method findById not supported");
     }
 }

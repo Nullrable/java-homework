@@ -2,10 +2,10 @@ package com.lsd.demo.client;
 
 import com.lsd.rpcfx.core.client.InvokerMetadata;
 import com.lsd.rpcfx.core.client.RpcfxClientAop;
+import com.lsd.rpcfx.core.client.RpcfxClientNetty;
 import java.lang.reflect.Method;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
-import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.aop.ProxyMethodInvocation;
 import org.springframework.stereotype.Component;
 
@@ -26,7 +26,7 @@ public class RpcfxAop implements MethodInterceptor {
             throw new IllegalStateException("MethodInvocation is not a Spring ProxyMethodInvocation: " + mi);
         } else {
 
-            RpcfxClientAop rpcfxClientAop = new RpcfxClientAop();
+            RpcfxClientNetty rpcfxClientAop = new RpcfxClientNetty();
 
             ProxyMethodInvocation pmi = (ProxyMethodInvocation)mi;
 
@@ -40,7 +40,7 @@ public class RpcfxAop implements MethodInterceptor {
             metadata.setArgs(args);
             metadata.setMethodName(method.getName());
             metadata.setMediaType("application/json; charset=utf-8");
-            metadata.setServerUrl("http://localhost:8080");
+            metadata.setServerUrl("127.0.0.1:8080");
 
             return rpcfxClientAop.invoke(metadata);
 //            return rpcfxClientAop.execute(pjp);

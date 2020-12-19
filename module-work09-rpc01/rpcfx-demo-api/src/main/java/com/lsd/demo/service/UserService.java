@@ -9,4 +9,6 @@ package com.lsd.demo.service;
 public interface UserService {
 
     User findById(String id);
+
+    User findByName(String name);
 }

@@ -6,6 +6,7 @@ import com.lsd.rpcfx.core.api.RpcfxRequest;
 import com.lsd.rpcfx.core.api.RpcfxResolver;
 import com.lsd.rpcfx.core.api.RpcfxResponse;
 import com.lsd.rpcfx.core.exception.RpcfxException;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 
@@ -43,14 +44,20 @@ public class RpcfxInvoker {
             response.setResult(JSON.toJSONString(result, SerializerFeature.WriteClassName));
 
             return response;
-        }catch (Exception e){
+        }catch (InvocationTargetException | IllegalAccessException re) {
 
-            e.printStackTrace();
+            Throwable mainException = re.getCause();
 
-            response.setStatus(false);
-            response.setException(new RpcfxException("server happens an error, see more information on server side"));
+            if (mainException instanceof RpcfxException) {
+                response.setStatus(false);
+                response.setException((RpcfxException)mainException);
+            }else {
+                response.setStatus(false);
+                response.setException(new RpcfxException(mainException));
+            }
 
             return response;
+
         }
 
     }

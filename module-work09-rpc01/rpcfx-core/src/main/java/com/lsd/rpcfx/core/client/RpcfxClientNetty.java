@@ -4,18 +4,15 @@ import com.alibaba.fastjson.JSON;
 import com.lsd.rpcfx.core.api.RpcfxRequest;
 import com.lsd.rpcfx.core.api.RpcfxResponse;
 import com.lsd.rpcfx.core.exception.RpcfxException;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
+
 
 /**
  * @Author: nhsoft.lsd
  * @Description:
- * @Date:Create：in 12/18/20 10:19 PM
+ * @Date:Create：in 12/19/20 10:16 AM
  * @Modified By：
  */
-public class RpcfxClientAop {
+public class RpcfxClientNetty {
 
     public Object invoke(InvokerMetadata metadata)throws Throwable {
         RpcfxRequest rpcfxrequest = new RpcfxRequest();
@@ -25,13 +22,15 @@ public class RpcfxClientAop {
 
         String reqJson = JSON.toJSONString(rpcfxrequest);
 
-        OkHttpClient client = new OkHttpClient();
-        final Request request = new Request.Builder()
-                .url(metadata.getServerUrl())
-                .post(RequestBody.create(MediaType.get(metadata.getMediaType()), reqJson))
-                .build();
+        String[] array = metadata.getServerUrl().split(":");
+        String host = array[0];
+        int port = Integer.parseInt(array[1]);
 
-        String respJson = client.newCall(request).execute().body().string();
+        NettyClient nettyClient = new NettyClient(host, port);
+
+        System.out.println("req json: " + reqJson);
+
+        String respJson = (String)nettyClient.doExecuteRequest(reqJson, metadata.getMediaType());
 
         System.out.println("resp json: "+respJson);
 
@@ -45,5 +44,6 @@ public class RpcfxClientAop {
         }
 
         return JSON.parse(response.getResult().toString());
+
     }
 }

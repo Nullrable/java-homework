@@ -27,12 +27,10 @@ public class Main {
 
         System.setProperty("fastjson.parser.autoTypeSupport", "true");
 
-        RpcfxAop rpcfxAop =  (RpcfxAop)context.getBean("RpcfxAop");
-
 
         UserService userService = (UserService)context.getBean("ProxyFactoryBean");
 
-        User user = userService.findById("123");
+        User user = userService.findByName("dongdong");
 
         System.out.println(JSON.toJSONString(user));
 
