@@ -1,12 +1,7 @@
-package com.lsd.demo.client;
+package com.lsd.rpcfx.core.client;
 
 import com.lsd.rpcfx.core.api.LoadBalancer;
 import com.lsd.rpcfx.core.api.Router;
-import com.lsd.rpcfx.core.api.SimpleLoadBalancer;
-import com.lsd.rpcfx.core.api.SimpleRouter;
-import com.lsd.rpcfx.core.client.InvokerMetadata;
-import com.lsd.rpcfx.core.client.RpcfxClient;
-import com.lsd.rpcfx.core.client.RpcfxClientNetty;
 import com.lsd.rpcfx.core.client.discover.ZookeeperServiceDiscover;
 import com.lsd.rpcfx.core.common.metadata.ServiceInfo;
 import java.lang.reflect.Method;
@@ -51,17 +46,12 @@ public class RpcfxAop implements MethodInterceptor {
 
             Class clazz =  method.getDeclaringClass();
             Object[] args = pmi.getArguments();
-//
-
 
             ZookeeperServiceDiscover zookeeperServiceDiscover = new ZookeeperServiceDiscover(zkClient);
             List<ServiceInfo> serviceInfoList = zookeeperServiceDiscover.getServiceInfos(clazz.getName());
 
-
             //可以根据分组什么的过滤
             serviceInfoList = router.route(serviceInfoList);
-
-
             ServiceInfo serviceInfo = loadBalancer.select(serviceInfoList);
 
 

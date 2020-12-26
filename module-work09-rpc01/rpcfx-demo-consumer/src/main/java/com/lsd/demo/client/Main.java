@@ -29,10 +29,6 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan(value = {"com.lsd.rpcfx", "com.lsd.demo"})
 public class Main {
 
-
-    @Autowired
-    private ServiceNodeConfig serviceNodeConfig;
-
     public static void main (String args[])throws Exception {
 
         ConfigurableApplicationContext context = SpringApplication.run(Main.class, args);
@@ -53,27 +49,6 @@ public class Main {
         proxyFactoryBean.setTargetClass(UserService.class);
         proxyFactoryBean.setInterceptorNames("RpcfxAop");
         return proxyFactoryBean;
-    }
-
-    @Bean
-    public ZkClient zkClient(){
-
-        ZkClient zkClient = new ZkClient(serviceNodeConfig.getServerUrl());
-        zkClient.setZkSerializer(new MyZkSerializer());
-        return zkClient;
-
-    }
-
-    @Bean
-    public Router router(){
-        Router router = new SimpleRouter();
-        return router;
-    }
-
-    @Bean
-    public LoadBalancer loadBalancer(){
-        LoadBalancer loadBalancer = new SimpleLoadBalancer();
-        return loadBalancer;
     }
 
 }
