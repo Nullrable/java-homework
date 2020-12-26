@@ -9,6 +9,6 @@
 /.mvn/wrapper/
 /mvnw
 /mvnw.cmd
-/module-work09-rpc01/rpcfx-core/target/
-/module-work08-database3-sharding-xa/logs/
-/module-work01-class-s/module-work01-class-s.iml
+/*/*/target/
+/*/logs/
+/*/*.iml
