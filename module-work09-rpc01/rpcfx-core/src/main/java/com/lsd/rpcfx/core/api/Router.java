@@ -1,14 +1,12 @@
 package com.lsd.rpcfx.core.api;
 
+import com.lsd.rpcfx.core.common.metadata.ServiceInfo;
 import java.util.List;
 
 /**
  * @Author: nhsoft.lsd
- * @Description:
- * @Date:Create：in 12/18/20 9:35 PM
- * @Modified By：
  */
 public interface Router {
 
-    List<String> route(List<String> urls);
+    List<ServiceInfo> route(List<ServiceInfo> serviceInfos);
 }

@@ -1,4 +1,4 @@
-package com.lsd.rpcfx.core;
+package com.lsd.rpcfx.core.common.annotation;
 
 import java.lang.annotation.*;
 
@@ -11,7 +11,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 @Documented
-public @interface RpcfxServiceScan {
+public @interface RpcfxService {
 
-    String[] value();
 }

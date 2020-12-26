@@ -1,12 +1,15 @@
-package com.lsd.demo;
+package com.lsd.rpcfx.core.server;
 
-import com.lsd.rpcfx.core.RpcfxServiceScan;
+import com.lsd.rpcfx.core.common.annotation.RpcfxServiceScan;
 import com.lsd.rpcfx.core.api.RpcfxResolver;
 import java.lang.annotation.Annotation;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import org.reflections.Reflections;
 import org.reflections.util.ClasspathHelper;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.core.annotation.AnnotationUtils;
 
 /**
@@ -15,14 +18,35 @@ import org.springframework.core.annotation.AnnotationUtils;
  * @Date:Create：in 12/18/20 4:37 PM
  * @Modified By：
  */
-public class ReflectRpcfxResolver implements RpcfxResolver {
+public class ReflectRpcfxResolver implements RpcfxResolver, ApplicationContextAware {
 
     private ConcurrentHashMap map = new ConcurrentHashMap();
+
+    private ApplicationContext applicationContext;
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext = applicationContext;
+    }
 
     @Override
     public Object resolve(String serviceClass) {
 
-        Annotation annotation = AnnotationUtils.findAnnotation(Bootstrap.class, RpcfxServiceScan.class);
+
+        Map<String, Object> beanMap = applicationContext.getBeansWithAnnotation(RpcfxServiceScan.class);
+
+        List<Object> beans =  new ArrayList<>(beanMap.values());
+
+        if(beans == null){
+            return null;
+        }
+        if (beans != null && beans.size() > 1) {
+            throw new IllegalArgumentException("annotation RpcfxServiceScan set only one");
+        }
+
+        Object bean = beans.get(0);
+
+        Annotation annotation = AnnotationUtils.findAnnotation(bean.getClass(), RpcfxServiceScan.class);
 
         String[] basePackages = ((RpcfxServiceScan) annotation).value();
 

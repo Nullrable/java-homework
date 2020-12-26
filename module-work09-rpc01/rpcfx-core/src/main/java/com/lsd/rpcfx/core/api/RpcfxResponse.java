@@ -1,6 +1,6 @@
 package com.lsd.rpcfx.core.api;
 
-import com.lsd.rpcfx.core.exception.RpcfxException;
+import com.lsd.rpcfx.core.common.exception.RpcfxException;
 
 /**
  * @Author: nhsoft.lsd

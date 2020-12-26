@@ -1,4 +1,4 @@
-package com.lsd.rpcfx.core.exception;
+package com.lsd.rpcfx.core.common.exception;
 
 /**
  * @Author: nhsoft.lsd

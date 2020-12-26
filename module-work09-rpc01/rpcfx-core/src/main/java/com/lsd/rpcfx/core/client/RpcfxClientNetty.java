@@ -3,7 +3,7 @@ package com.lsd.rpcfx.core.client;
 import com.alibaba.fastjson.JSON;
 import com.lsd.rpcfx.core.api.RpcfxRequest;
 import com.lsd.rpcfx.core.api.RpcfxResponse;
-import com.lsd.rpcfx.core.exception.RpcfxException;
+import com.lsd.rpcfx.core.common.exception.RpcfxException;
 
 
 /**
@@ -24,8 +24,16 @@ public class RpcfxClientNetty implements RpcfxClient {
         String reqJson = JSON.toJSONString(rpcfxrequest);
 
         String[] array = metadata.getServerUrl().split(":");
-        String host = array[0];
-        int port = Integer.parseInt(array[1]);
+
+        String host = null;
+        int port = 80;
+        if (array.length == 2) {
+            host = array[0];
+            port = Integer.parseInt(array[1]);
+        }else if (array.length == 3){
+            host = array[1].replaceAll("//", "");
+            port = Integer.parseInt(array[2]);
+        }
 
         NettyClient nettyClient = new NettyClient(host, port);
 

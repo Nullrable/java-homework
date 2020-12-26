@@ -3,7 +3,7 @@ package com.lsd.rpcfx.core.client;
 import com.alibaba.fastjson.JSON;
 import com.lsd.rpcfx.core.api.RpcfxRequest;
 import com.lsd.rpcfx.core.api.RpcfxResponse;
-import com.lsd.rpcfx.core.exception.RpcfxException;
+import com.lsd.rpcfx.core.common.exception.RpcfxException;
 import java.lang.reflect.Method;
 import net.sf.cglib.proxy.Callback;
 import net.sf.cglib.proxy.Enhancer;

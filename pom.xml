@@ -32,6 +32,7 @@
         <module>module-work05-all</module>
         <module>module-work03-gateway</module>
         <module>module-work09-rpc01</module>
+        <module>module-work09-rpc02-dubbo-tcc</module>
     </modules>
 
     <packaging>pom</packaging>

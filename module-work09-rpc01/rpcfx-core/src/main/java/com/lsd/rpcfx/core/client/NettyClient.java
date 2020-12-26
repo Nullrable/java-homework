@@ -59,6 +59,7 @@ class NettyClient {
         //发起同步连接操作
         ChannelFuture channelFuture = bootstrap.connect(host, port);
 
+
         //注册连接事件
         channelFuture.addListener((ChannelFutureListener)future -> {
             //如果连接成功
@@ -129,12 +130,18 @@ class NettyClient {
                 String result = buf.toString(CharsetUtil.UTF_8);
                 response = result;
             }
-            promise.setSuccess();
-            System.out.println("response: " + response);
 
+            System.out.println("response: " + response);
+            promise.setSuccess();
 
         }
 
+        @Override
+        public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
+
+            ctx.writeAndFlush(Unpooled.EMPTY_BUFFER)
+                    .addListener(ChannelFutureListener.CLOSE);
+        }
 
         public synchronized ChannelPromise sendMessage(String request, String mediaType) {
             while (ctx == null) {
@@ -164,6 +171,7 @@ class NettyClient {
         httpRequest.headers().set(HttpHeaderNames.CONTENT_TYPE, mediaType);
         httpRequest.headers().add(HttpHeaderNames.CONTENT_LENGTH,httpRequest.content().readableBytes());
         ctx.writeAndFlush(httpRequest);
+
     }
 
 

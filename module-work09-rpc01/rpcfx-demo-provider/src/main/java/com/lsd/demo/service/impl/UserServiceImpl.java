@@ -2,7 +2,8 @@ package com.lsd.demo.service.impl;
 
 import com.lsd.demo.service.User;
 import com.lsd.demo.service.UserService;
-import com.lsd.rpcfx.core.exception.RpcfxException;
+import com.lsd.rpcfx.core.common.annotation.RpcfxService;
+import com.lsd.rpcfx.core.common.exception.RpcfxException;
 
 /**
  * @Author: nhsoft.lsd
@@ -10,6 +11,7 @@ import com.lsd.rpcfx.core.exception.RpcfxException;
  * @Date:Create：in 12/18/20 2:23 PM
  * @Modified By：
  */
+@RpcfxService
 public class UserServiceImpl implements UserService {
 
     @Override

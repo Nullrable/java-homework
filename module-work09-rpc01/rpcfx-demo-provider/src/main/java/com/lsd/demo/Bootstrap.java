@@ -2,16 +2,21 @@ package com.lsd.demo;
 
 import com.lsd.demo.service.UserService;
 import com.lsd.demo.service.impl.UserServiceImpl;
-import com.lsd.rpcfx.core.RpcfxServiceScan;
+import com.lsd.rpcfx.core.common.annotation.RpcfxServiceScan;
 import com.lsd.rpcfx.core.api.RpcfxRequest;
 import com.lsd.rpcfx.core.api.RpcfxResolver;
 import com.lsd.rpcfx.core.api.RpcfxResponse;
+import com.lsd.rpcfx.core.server.DefaultRpcfxResolver;
+import com.lsd.rpcfx.core.server.ReflectRpcfxResolver;
 import com.lsd.rpcfx.core.server.RpcfxInvoker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ComponentScans;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,7 +30,11 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @RestController
 @RpcfxServiceScan("com.lsd.demo.service.impl")
+@ComponentScan(value = {"com.lsd.rpcfx", "com.lsd.demo"})
 public class Bootstrap {
+
+    @Autowired
+    private ApplicationStartupRunner applicationStartupRunner;
 
     public static void main (String args[]) {
 
@@ -57,8 +66,6 @@ public class Bootstrap {
     public RpcfxResolver createReflectRpcfxResolver(){
         return new ReflectRpcfxResolver();
     }
-
-
 
     @Bean(name = "com.lsd.demo.service.UserService")
     public UserService createUserService(){

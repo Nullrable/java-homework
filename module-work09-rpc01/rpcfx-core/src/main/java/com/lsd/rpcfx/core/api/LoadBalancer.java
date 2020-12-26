@@ -1,5 +1,6 @@
 package com.lsd.rpcfx.core.api;
 
+import com.lsd.rpcfx.core.common.metadata.ServiceInfo;
 import java.util.List;
 
 /**
@@ -10,5 +11,5 @@ import java.util.List;
  */
 public interface LoadBalancer {
 
-    String select(List<String> urls);
+    ServiceInfo select(List<ServiceInfo> serviceInfos);
 }

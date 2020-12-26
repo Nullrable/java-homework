@@ -5,7 +5,7 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.lsd.rpcfx.core.api.RpcfxRequest;
 import com.lsd.rpcfx.core.api.RpcfxResolver;
 import com.lsd.rpcfx.core.api.RpcfxResponse;
-import com.lsd.rpcfx.core.exception.RpcfxException;
+import com.lsd.rpcfx.core.common.exception.RpcfxException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;

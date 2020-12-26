@@ -1,4 +1,4 @@
-package com.lsd.demo;
+package com.lsd.rpcfx.core.server;
 
 import com.lsd.rpcfx.core.api.RpcfxResolver;
 import org.springframework.context.ApplicationContext;
@@ -14,6 +14,7 @@ public class DefaultRpcfxResolver implements RpcfxResolver, ApplicationContextAw
 
     private ApplicationContext applicationContext;
 
+    @Override
     public void setApplicationContext(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
