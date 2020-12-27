@@ -11,7 +11,7 @@ public class ModuleWork05SpringLifecycleApplication {
         SpringApplication.run(ModuleWork05SpringLifecycleApplication.class, args);
     }
 
-    @Bean(initMethod = "myInit", destroyMethod = "myDestroy")
+    @Bean(initMethod = "myInit", destroyMethod = "myDestroy", name = "MyLifeCyc1")
     MyLifeCyc createMyLifeCyc(){
         MyLifeCyc myLifeCyc = new MyLifeCyc();
         myLifeCyc.setMonitor("123");
