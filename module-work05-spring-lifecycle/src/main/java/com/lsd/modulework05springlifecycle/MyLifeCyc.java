@@ -37,7 +37,6 @@ public class MyLifeCyc implements BeanNameAware, BeanFactoryAware, ApplicationCo
 
     @Override
     public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
-
         MyLifeCyc myLifeCyc = (MyLifeCyc)beanFactory.getBean("MyLifeCyc1");
 
         System.out.println(this.getClass().getSimpleName() + "调用BeanFactoryAware接口的setBeanFactory方法" + myLifeCyc.getClass().getSimpleName());
