@@ -1,4 +1,4 @@
-package com.lsd.asm;
+package com.lsd.ow2.asm;
 
 import java.io.IOException;
 import org.objectweb.asm.ClassReader;

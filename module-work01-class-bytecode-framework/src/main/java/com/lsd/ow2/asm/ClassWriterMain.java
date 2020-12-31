@@ -1,4 +1,4 @@
-package com.lsd.asm;
+package com.lsd.ow2.asm;
 
 
 import org.objectweb.asm.ClassWriter;
@@ -13,7 +13,7 @@ public class ClassWriterMain extends ClassLoader implements Opcodes {
 
         ClassWriter cw = new ClassWriter(0);
         cw.visit(V1_5, ACC_PUBLIC + ACC_ABSTRACT + ACC_INTERFACE,
-                "com/lsd/asm/Comparable", null, "java/lang/Object",
+                "com/lsd/ow2/asm/Comparable", null, "java/lang/Object",
                 new String[] { });
         cw.visitField(ACC_PUBLIC + ACC_FINAL + ACC_STATIC, "LESS", "I",
                 null, new Integer(-1)).visitEnd();

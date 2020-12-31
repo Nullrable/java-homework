@@ -1,6 +1,6 @@
-package com.lsd.asm.aop;
+package com.lsd.ow2.asm.aop;
 
-import com.lsd.asm.MyClassLoader;
+import com.lsd.ow2.asm.MyClassLoader;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -113,7 +113,7 @@ public class AsmAopMain extends ClassLoader{
         @Override
         public void visitCode() {
             //此方法在访问方法的头部时被访问到，仅被访问一次
-            visitMethodInsn(Opcodes.INVOKESTATIC, "com/lsd/asm/aop/AsmAopMain$Monitor",  "start", "()V", false);
+            visitMethodInsn(Opcodes.INVOKESTATIC, "com/lsd/ow2/asm/aop/AsmAopMain$Monitor",  "start", "()V", false);
             super.visitCode();
         }
 
@@ -123,7 +123,7 @@ public class AsmAopMain extends ClassLoader{
             //如应在方法结尾处添加新指令，则应判断：
         if(opcode == Opcodes.RETURN)
         {
-            visitMethodInsn(Opcodes.INVOKESTATIC, "com/lsd/asm/aop/AsmAopMain$Monitor",  "end", "()V", false);
+            visitMethodInsn(Opcodes.INVOKESTATIC, "com/lsd/ow2/asm/aop/AsmAopMain$Monitor",  "end", "()V", false);
         }
             super.visitInsn(opcode);
         }
