@@ -1,8 +1,5 @@
-package com.lsd.jboss.javassist.test4buddy;
+package com.lsd.net.bytebuddy.simple;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import net.bytebuddy.ByteBuddy;
 import net.bytebuddy.dynamic.DynamicType;
 import net.bytebuddy.implementation.FixedValue;
@@ -21,7 +18,7 @@ public class ByteBuddyTest1 {
         DynamicType.Builder builder = byteBuddy.subclass(Object.class);
 
         DynamicType.Loaded loaded = builder
-                .name("com.lsd.jboss.javassist.test4buddy.TestHelloWord")
+                .name("com.lsd.net.bytebuddy.test4buddy.TestHelloWord")
                 .method(ElementMatchers.named("toString"))
                 .intercept(FixedValue.value("Hello World!"))
                 .make()

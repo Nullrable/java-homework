@@ -1,9 +1,10 @@
-package com.lsd.jboss.javassist.test4buddy;
+package com.lsd.net.bytebuddy.simple;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import net.bytebuddy.ByteBuddy;
+import net.bytebuddy.NamingStrategy;
 import net.bytebuddy.dynamic.DynamicType;
 import net.bytebuddy.dynamic.loading.ClassLoadingStrategy;
 import net.bytebuddy.dynamic.loading.ClassReloadingStrategy;
@@ -28,6 +29,7 @@ public class ByteBuddyTest2 {
     public static void testMethodDelegation() throws IllegalAccessException, InstantiationException {
 
         DynamicType.Loaded<Foo> loaded = new ByteBuddy()
+                .with(new NamingStrategy.SuffixingRandom("suffix"))
                 .subclass(Foo.class)
                 .method(ElementMatchers.named("sayHelloFoo")
                         .and(ElementMatchers.isDeclaredBy(Foo.class)
@@ -75,14 +77,16 @@ public class ByteBuddyTest2 {
     public static void testByteBuddyAgent() {
 
         net.bytebuddy.agent.ByteBuddyAgent.install();
-        new ByteBuddy()
+        DynamicType.Loaded<Foo> loaded =  new ByteBuddy()
+//                .rebase() 与 redefine 区别在于，redefine 直接替换原方法，而rebase会保留原方法，原方法会改名并改为private
                 .redefine(Foo.class)
                 .method(ElementMatchers.named("sayHelloFoo"))
                 .intercept(FixedValue.value("Hello Foo Redefined")) //这里的实现是返回一个固定的值"Hello Foo Redefined"
                 .make()
-                .load(
-                        Foo.class.getClassLoader(),
+                .load(Foo.class.getClassLoader(),
                         ClassReloadingStrategy.fromInstalledAgent());
+
+        Utils.outputClazz(loaded.getBytes());
 
         Foo f = new Foo();
 

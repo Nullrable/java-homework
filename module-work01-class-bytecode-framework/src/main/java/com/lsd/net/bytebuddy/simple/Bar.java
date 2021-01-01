@@ -1,4 +1,4 @@
-package com.lsd.jboss.javassist.test4buddy;
+package com.lsd.net.bytebuddy.simple;
 
 /**
  * @Author: nhsoft.lsd
