@@ -20,6 +20,5 @@ public class SupplierTest {
             String res = supplier.get();
             System.out.println(res);
         }
-
     }
 }
