@@ -1,0 +1,8 @@
+cong:
+  rpc:
+    registryCenterUrl: '127.0.0.1:2181'
+    service:
+      host: 127.0.0.1
+      protocol: http
+      port: 8080
+      path: /
