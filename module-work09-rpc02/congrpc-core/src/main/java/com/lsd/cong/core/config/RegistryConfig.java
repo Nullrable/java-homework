@@ -8,8 +8,6 @@ import org.springframework.core.annotation.Order;
  * @Author: nhsoft.lsd
  */
 @ConfigurationProperties(prefix = "cong.rpc")
-@Primary
-@Order(1)
 public class RegistryConfig {
 
     public RegistryConfig() {
