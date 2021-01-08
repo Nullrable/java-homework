@@ -1,8 +1,6 @@
 package com.lsd.cong.core.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Primary;
-import org.springframework.core.annotation.Order;
 
 /**
  * @Author: nhsoft.lsd
