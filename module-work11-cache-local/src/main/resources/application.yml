@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/java000_data?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: nhsoft123
+    initialSize: 3
+    maxActive: 100
+    minIdle: 10
+    maxWait: 50000
+  profiles:
+    #dev(info) or prod(error)
+    active: prod
+
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 50MB
+      max-request-size: 300MB
+
+#配置MyBatis
+mybatis:
+  type-aliases-package: com.xxx.spring.mysqles.domain
+  mapper-locations: classpath:mybatis/*Mapper.xml

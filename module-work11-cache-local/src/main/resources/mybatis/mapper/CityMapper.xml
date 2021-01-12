@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lsd.cache.mybatis.dao.CityDao">
+
+    <resultMap id="BaseResultMap" type="com.lsd.cache.mybatis.entity.City">
+        <!--@Table city-->
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="country" column="country" jdbcType="VARCHAR"/>
+        <result property="province" column="province" jdbcType="VARCHAR"/>
+        <result property="city" column="city" jdbcType="VARCHAR"/>
+        <result property="postSn" column="post_sn" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="read" resultMap="BaseResultMap">
+        select
+          id, country, province, city, post_sn
+        from java000_data.city
+        where id = #{id}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="list" resultMap="BaseResultMap">
+        select
+          id, country, province, city, post_sn
+        from java000_data.city
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="country != null and country != ''">
+                and country = #{country}
+            </if>
+            <if test="province != null and province != ''">
+                and province = #{province}
+            </if>
+            <if test="city != null and city != ''">
+                and city = #{city}
+            </if>
+            <if test="postSn != null">
+                and post_sn = #{postSn}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="save" keyProperty="id" useGeneratedKeys="true">
+        insert into java000_data.city(country, province, city, post_sn)
+        values (#{country}, #{province}, #{city}, #{postSn})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update java000_data.city
+        <set>
+            <if test="country != null and country != ''">
+                country = #{country},
+            </if>
+            <if test="province != null and province != ''">
+                province = #{province},
+            </if>
+            <if test="city != null and city != ''">
+                city = #{city},
+            </if>
+            <if test="postSn != null">
+                post_sn = #{postSn},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="delete">
+        delete from java000_data.city where id = #{id}
+    </delete>
+
+</mapper>

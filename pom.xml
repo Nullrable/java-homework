@@ -35,6 +35,8 @@
         <module>module-work09-rpc02-dubbo-tcc</module>
         <module>module-work01-class-bytecode-framework</module>
         <module>module-work06-lambda</module>
+        <module>module-work11-cache-redis</module>
+        <module>module-work11-cache-local</module>
     </modules>
 
     <packaging>pom</packaging>
