@@ -3,6 +3,8 @@ package com.lsd.cache.mybatis.service.impl;
 import com.lsd.cache.mybatis.entity.City;
 import com.lsd.cache.mybatis.dao.CityDao;
 import com.lsd.cache.mybatis.service.CityService;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import org.springframework.stereotype.Service;
 import com.lsd.cache.mybatis.dto.CityQuery;
 

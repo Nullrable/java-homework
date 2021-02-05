@@ -37,6 +37,7 @@
         <module>module-work06-lambda</module>
         <module>module-work11-cache-redis</module>
         <module>module-work11-cache-local</module>
+        <module>module-Java00-forever</module>
     </modules>
 
     <packaging>pom</packaging>
