@@ -38,6 +38,7 @@
         <module>module-work11-cache-redis</module>
         <module>module-work11-cache-local</module>
         <module>module-Java00-forever</module>
+        <module>module-work11-cache-LRU</module>
     </modules>
 
     <packaging>pom</packaging>

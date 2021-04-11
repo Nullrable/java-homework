@@ -1,4 +1,4 @@
-package com.lsd.cache.guava.cache;
+package com.lsd.cache.lru;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
