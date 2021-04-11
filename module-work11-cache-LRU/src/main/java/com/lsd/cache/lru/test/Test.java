@@ -12,7 +12,7 @@ public class Test {
         System.out.println(tableSizeFor(3)); // output:4
         System.out.println(tableSizeFor(4)); // output:4
         System.out.println(tableSizeFor(8)); // output:8
-        System.out.println(tableSizeFor(17)); // output:16
+        System.out.println(tableSizeFor(17));// output:32
     }
 
 
