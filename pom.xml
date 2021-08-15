@@ -39,6 +39,7 @@
         <module>module-work11-cache-local</module>
         <module>module-Java00-forever</module>
         <module>module-work11-cache-LRU</module>
+        <module>module-work12-data-structure-and-algorithm</module>
     </modules>
 
     <packaging>pom</packaging>
