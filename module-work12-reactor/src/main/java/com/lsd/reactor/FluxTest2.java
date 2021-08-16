@@ -93,7 +93,6 @@ public class FluxTest2 {
 //
 //        co.subscribe(System.out::println, e -> {}, () -> {});
 //        System.out.println("done subscribing 2");
-
         Flux flux = Flux.just(1, 3, 5, 2, 4, 6, 11, 12, 13)
                 .groupBy(i -> i % 2 == 0 ? "even" : "odd")
                 .concatMap(g -> g.defaultIfEmpty(-1) //如果组为空，显示为 -1
