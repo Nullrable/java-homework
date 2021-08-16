@@ -40,6 +40,7 @@
         <module>module-Java00-forever</module>
         <module>module-work11-cache-LRU</module>
         <module>module-work12-data-structure-and-algorithm</module>
+        <module>module-work12-reactor</module>
     </modules>
 
     <packaging>pom</packaging>
