@@ -11,6 +11,7 @@ import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.SimpleChannelInboundHandler;
+import io.netty.channel.epoll.EpollChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -39,11 +40,16 @@ public class NettyServer {
         ServerBootstrap serverBootstrap = new ServerBootstrap();
 
         NioEventLoopGroup bossEventLoopGroup = new NioEventLoopGroup();
-        NioEventLoopGroup workEventLoopGroup = new NioEventLoopGroup();
+        NioEventLoopGroup workEventLoopGroup = new NioEventLoopGroup(1000);
         serverBootstrap
                 .group(bossEventLoopGroup, workEventLoopGroup)
                 .channel(NioServerSocketChannel.class)
-                .option(ChannelOption.SO_BACKLOG, 128)          // (7)
+                .option(ChannelOption.SO_BACKLOG, 128)
+                .option(ChannelOption.SO_KEEPALIVE, true)
+                .option(ChannelOption.TCP_NODELAY, true)
+                .option(ChannelOption.SO_RCVBUF, 32 * 1024)
+                .option(ChannelOption.SO_SNDBUF, 32 * 1024)
+                .option(EpollChannelOption.SO_REUSEPORT, true)
                 .childOption(ChannelOption.SO_KEEPALIVE, true)
                 .handler(new LoggingHandler(LogLevel.INFO))
                 .childHandler(new ChannelInitializer<SocketChannel>() {
