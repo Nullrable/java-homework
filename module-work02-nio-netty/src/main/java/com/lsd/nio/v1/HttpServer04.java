@@ -27,7 +27,7 @@ public class HttpServer04 {
        ServerSocketChannel serverChannel = ServerSocketChannel.open();
        serverChannel.configureBlocking(false);
        ServerSocket ssocket = serverChannel.socket();
-       InetSocketAddress address = new InetSocketAddress(8091);
+       InetSocketAddress address = new InetSocketAddress(8092);
        ssocket.bind(address);
        Selector selector = Selector.open();
        serverChannel.register(selector, SelectionKey.OP_ACCEPT);

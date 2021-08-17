@@ -38,14 +38,14 @@ public class NettyServer {
 
         ServerBootstrap serverBootstrap = new ServerBootstrap();
 
-        NioEventLoopGroup bossEventLoopGroup = new NioEventLoopGroup(3);
-        NioEventLoopGroup workEventLoopGroup = new NioEventLoopGroup(100);
+        NioEventLoopGroup bossEventLoopGroup = new NioEventLoopGroup();
+        NioEventLoopGroup workEventLoopGroup = new NioEventLoopGroup();
         serverBootstrap
                 .group(bossEventLoopGroup, workEventLoopGroup)
                 .channel(NioServerSocketChannel.class)
                 .option(ChannelOption.SO_BACKLOG, 128)          // (7)
                 .childOption(ChannelOption.SO_KEEPALIVE, true)
-                .handler(new LoggingHandler(LogLevel.DEBUG))
+                .handler(new LoggingHandler(LogLevel.INFO))
                 .childHandler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
@@ -61,9 +61,6 @@ public class NettyServer {
 
                             @Override
                             protected void channelRead0(ChannelHandlerContext ctx, FullHttpRequest req) {
-
-                                System.out.println("======>channelRead0");
-
                                 String message = "hello,lusudong";
                                 ByteBuf outByteBuf = Unpooled.copiedBuffer(message,  Charset.forName("UTF-8"));
 
