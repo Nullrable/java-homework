@@ -10,7 +10,6 @@ public class SupplierTest {
     public static void main(String args[]) {
 
         test("test", () -> "hello word");
-
     }
 
 

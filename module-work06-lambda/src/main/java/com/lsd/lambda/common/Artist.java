@@ -14,6 +14,10 @@ public class Artist {
         this.country = country;
     }
 
+    public Artist() {
+        
+    }
+
     public String getName() {
         return name;
     }
