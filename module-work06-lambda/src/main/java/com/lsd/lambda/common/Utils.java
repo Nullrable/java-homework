@@ -20,4 +20,14 @@ public class Utils {
                 new Dish("prawns", false, 300, Dish.Type.FISH),
                 new Dish("salmon", false, 450, Dish.Type.FISH));
     }
+
+    public static List<Artist> getArtists() {
+        return  Arrays.asList(
+                new Artist("梵高", "法国"),
+                new Artist("肖邦", "波兰"),
+                new Artist("莫扎特", "奥地利"),
+                new Artist("鲁班", "中国"),
+                new Artist("达芬奇", "意大利"),
+                new Artist("毕加索", "西班牙"));
+    }
 }

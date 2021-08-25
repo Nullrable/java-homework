@@ -9,7 +9,7 @@ public class PredicateTest {
 
     public static void main(String args[]) {
 
-        test("123", (String str) -> str.equals("123"));
+        test("123", (str) -> str.equals("123"));
 
     }
 
