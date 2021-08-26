@@ -17,12 +17,22 @@ public class GroupByTest {
 
     public static void main(String args[]) {
 
-        testOneLevel();
+//        testOneLevel();
+//
+//        testMultiLevel();
+//
+//        testSubLevelCount();
 
-        testMultiLevel();
+        testMergeCollector();
+    }
 
-        testSubLevelCount();
+    private static void testMergeCollector(){
 
+       Map<Dish.Type, List<String>> resultList = Utils.getDishs().stream().collect(Collectors.groupingBy(Dish::getType, Collectors.mapping(Dish::getName, Collectors.toList())));
+
+        resultList.entrySet().forEach(entry -> {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        });
     }
 
     private static void testSubLevelMaxby() {
