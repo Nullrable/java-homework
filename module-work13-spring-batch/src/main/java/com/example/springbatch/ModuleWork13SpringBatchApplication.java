@@ -7,7 +7,21 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ModuleWork13SpringBatchApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ModuleWork13SpringBatchApplication.class, args);
+
+        try {
+            test();
+        } catch (Exception e)  {
+            System.out.println(e.getMessage());
+        }
+
+
     }
 
+    private static void test() {
+        try {
+            throw new RuntimeException("12321");
+        } finally {
+            System.out.println("oooo");
+        }
+    }
 }
