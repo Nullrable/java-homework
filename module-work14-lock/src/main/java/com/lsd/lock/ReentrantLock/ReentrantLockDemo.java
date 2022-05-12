@@ -73,6 +73,7 @@ public class ReentrantLockDemo {
         public void run() {
 
             for (; ; ) {
+
                 try {
                     lock.lock();
                     while (stock == 0) {
