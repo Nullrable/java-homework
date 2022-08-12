@@ -42,6 +42,7 @@
         <module>module-work12-data-structure-and-algorithm</module>
         <module>module-work12-reactor</module>
         <module>module-work14-lock</module>
+        <module>module-work15-java-base</module>
     </modules>
 
     <packaging>pom</packaging>
