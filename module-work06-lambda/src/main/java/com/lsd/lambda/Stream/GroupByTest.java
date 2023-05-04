@@ -2,10 +2,13 @@ package com.lsd.lambda.Stream;
 
 import com.lsd.lambda.common.Dish;
 import com.lsd.lambda.common.Utils;
+import java.nio.channels.Selector;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
 /**
@@ -82,6 +85,7 @@ public class GroupByTest {
      * 一级分组
      */
     private static void testOneLevel() {
+
 
         Map<CaloricLevel, List<Dish>> map = Utils.getDishs().stream().collect(Collectors.groupingBy(
                 dish -> {

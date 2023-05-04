@@ -16,7 +16,7 @@ public class ReduceTest {
         /**
          * 求值
          */
-        System.out.println(  nums.stream().reduce(1, (a, b) -> a + b));
+        System.out.println(  nums.stream().reduce(0, Integer::sum));
 
 
         /**

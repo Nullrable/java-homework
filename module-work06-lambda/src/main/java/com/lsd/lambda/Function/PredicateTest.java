@@ -1,5 +1,6 @@
 package com.lsd.lambda.Function;
 
+import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
 /**
@@ -9,7 +10,19 @@ public class PredicateTest {
 
     public static void main(String args[]) {
 
-        test("123", (str) -> str.equals("123"));
+
+        int  i = 0;
+        while (true) {
+
+            if (i != 10) {
+
+                i = i + 1;
+                System.out.println(i);
+                continue;
+            }
+            System.out.println(i);
+            break;
+        }
 
     }
 

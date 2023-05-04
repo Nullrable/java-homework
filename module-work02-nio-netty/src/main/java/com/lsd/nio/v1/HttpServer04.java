@@ -45,6 +45,7 @@ public class HttpServer04 {
 
            while (iterator.hasNext()) {
                SelectionKey key = iterator.next();
+
                iterator.remove();
                try {
                    if (key.isValid() && key.isAcceptable()){
