@@ -16,8 +16,12 @@ public class Test {
 //       String result = decrypt("jFWIbm4LZF7m2kvIQ4esexMidi5viOcgONImpMdaReiGlKcRPr+7qa0+U1WLQq699B/6YMamTTs/U3EDD5VNaCTQy4xB1eMYalcgkybSRYXV5UnCwgk0FVs6LQpUgTrPKhYM35iFrbpB1Iniu33GzPbvLEJST3Xb3QI7K2FOe9Y9K1TVYG7GlhYfU7Z6mVaEHiV6+4hXk8TwonY9fjmExQGdZ5wKwrCdi1UkHBr+yM8=", "uIz19lPqmZoFViA4FHrO2B");
 //        System.out.println(result);
 
-        String s =  encrypt("{\"encryptUrl\":{\"bookCode\":\"4030\",\"bookScopeId\":\"374a3551-1182-41aa-bd3f-77e59f41ce9b\",\"version\":\"20221102\",\"timestamp\":1667790043017,\"appUserNum\":434400017,\"branchNum\":99}}", "uIz19lPqmZoFViA4FHrO2B");
-        System.out.println(s);
+//        String s =  encrypt("{\"encryptUrl\":{\"bookCode\":\"4030\",\"bookScopeId\":\"374a3551-1182-41aa-bd3f-77e59f41ce9b\",\"version\":\"20221102\",\"timestamp\":1667790043017,\"appUserNum\":434400017,\"branchNum\":99}}", "uIz19lPqmZoFViA4FHrO2B");
+//        System.out.println(s);
+
+        byte[] bytes =  new byte[]{98,111,111,108,101,97,100};
+        System.out.println(new String(bytes));
+
     }
 
     public static void test(int x) {
